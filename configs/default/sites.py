@@ -43,7 +43,7 @@ INVITE_PERCENT = 0.2
 INVITE_NUM = 5
 
 # 网站邀请界面提示语
-INVITEINFO = '邀请码实时更新，如果用完了请关注公众号findyourownway获取'
+INVITEINFO = '邀请码实时更新，如果用完了请关注公众号获取'
 
 # 网站域名设置（请正确填写，不然订阅功能会失效：
 HOST = 'http://127.0.0.1:8000/'

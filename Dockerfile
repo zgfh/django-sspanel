@@ -12,6 +12,8 @@ FROM daocloud.io/python:3.6
 LABEL Name=sspanel Version=0.0.1
 EXPOSE 8080
 WORKDIR /src/django-sspanel
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
+RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
 
 ADD requirements.txt requirements.txt
 # Using pip:
