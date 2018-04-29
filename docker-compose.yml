@@ -1,8 +1,11 @@
+#docker-compose up
+#docker-compose exec web python manage.py createsuperuser
+#see https://github.com/Ehco1996/django-sspanel/wiki/%E9%9D%A2%E6%9D%BF%E9%83%A8%E7%BD%B2
 version: '3'
 
 services:
   db:
-    image: mysql:5.6
+    image: daocloud.io/mysql:5.6
     container_name : sspanel-db    
     restart: always
     environment:
@@ -22,7 +25,6 @@ services:
     environment:
       MYSQL_PASSWORD: yourpass
       MYSQL_HOST: db
-    command: uwsgi uwsgi.ini
     volumes:
       - .:/src/django-sspanel
       - static/:/src/django-sspanel/static      
@@ -33,7 +35,7 @@ services:
     networks: 
       - sspanel_network
   nginx:
-    image: nginx
+    image: daocloud.io/nginx
     restart: always    
     container_name : sspanel-nginx
     volumes:

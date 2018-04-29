@@ -4,17 +4,17 @@
 # OS Support also exists for jessie & stretch (slim and full).
 # See https://hub.docker.com/r/library/python/ for all supported Python
 # tags from Docker Hub.
-FROM python:3.6
+FROM daocloud.io/python:3.6
 
 # If you prefer miniconda:
 #FROM continuumio/miniconda3
 
 LABEL Name=sspanel Version=0.0.1
 EXPOSE 8080
-
-RUN mkdir -p /src/django-sspanel
-ADD . /src/django-sspanel
 WORKDIR /src/django-sspanel
 
+ADD requirements.txt requirements.txt
 # Using pip:
-RUN pip install -r requirements.txt && python manage.py collectstatic --no-input
+RUN pip install --upgrade pip  -i https://pypi.tuna.tsinghua.edu.cn/simple;pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
+ADD . .
+CMD ["bash","./start.sh"]
